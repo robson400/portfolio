@@ -1,5 +1,22 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Verificação do código secreto
+    let inputCode = '';  // Armazena as teclas digitadas
+    const secretCode = '27051995'; // O código secreto
+
+    // Função que escuta a digitação das teclas
+    document.addEventListener('keydown', function(event) {
+        inputCode += event.key;  // Adiciona a tecla pressionada à sequência
+
+        // Verifica se a sequência corresponde ao código secreto
+        if (inputCode === secretCode) {
+            alert('Este site foi desenvolvido por Robson William');
+            inputCode = ''; // Reseta o código após o alerta
+        } else if (inputCode.length > secretCode.length) {
+            inputCode = ''; // Reseta se o código ficar muito longo (erro de digitação)
+        }
+    });
+
     // Mobile Navigation
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
@@ -134,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // For this example, we'll just log it to console
             console.log('Formulário enviado:', { name, email, subject, message });
             
-            // Show success message (in a real app, you'd do this after successful submission)
+            // Show success message (in a real app, you'd do isso após submissão bem-sucedida)
             alert('Obrigado pela sua mensagem! Entrarei em contato em breve.');
             
             // Reset form
@@ -159,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.setAttribute('aria-current', 'page');
                 
                 window.scrollTo({
-                    top: targetElement.offsetTop - 80, // Adjust for header height
+                    top: targetElement.offsetTop - 80, // Ajuste para altura do cabeçalho
                     behavior: 'smooth'
                 });
             }
